@@ -1,1 +1,1 @@
-# LAIDD-molecule-generation
+# Molecular generation for LAIDD Lecture

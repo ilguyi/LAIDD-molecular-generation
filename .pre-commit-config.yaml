@@ -1,0 +1,54 @@
+# @see https://pre-commit.com/hooks.html
+# @see https://github.com/readthedocs/common/blob/a7af72b7e5946d62fd3b4dc524d6406604488f6f/pre-commit-config.yaml
+# @see https://github.com/google/yapf
+
+repos:
+
+- repo: https://github.com/pre-commit/pre-commit-hooks.git
+  rev: v2.3.0
+  hooks:
+  # prevent giant files from being committed
+  - id: check-added-large-files
+    args: ['--maxkb=5120']
+  # check for UTF-8 byte-order marker
+  - id: check-byte-order-marker
+  # check for files that could conflict in case-insensitive filesystems
+  - id: check-case-conflict
+  # check for debugger imports and Python 3.7 or above breakpoint() calls
+  - id: debug-statements
+  # replace double quoted strings with single quoted strings
+  - id: double-quote-string-fixer
+  # ensure that a file is either empty or ends with single new line
+  - id: end-of-file-fixer
+    exclude: 'static'
+  # add '# -*- config: utf-8 -*-' at the top
+  - id: fix-encoding-pragma
+    args: ['--remove']  # remove the encoding pragma
+  # check for merge conflict strings
+  - id: check-merge-conflict
+  # check for symlinks pointing to nothing
+  - id: check-symlinks
+  # trim trailing whitespaces
+  - id: trailing-whitespace
+  # check mixed line ending
+  - id: mixed-line-ending
+    args: ['--fix=lf']  # make lines end with LF
+  # sort all entries and remove entries with version 0.0.0 in requirements.txt
+  - id: requirements-txt-fixer
+  # ensure that files in tests/ directory end in *_test.py
+  - id: name-tests-test
+#    args: ['--django']  # allow test*.py
+  # check against PEP 8
+  - id: flake8
+    args: ['--ignore=E111,E114,E121,E122,E127,E501,W503']  # ignore specific errors
+
+# - repo: https://github.com/pre-commit/mirrors-yapf.git
+#   rev: v0.26.0
+#   hooks:
+#   # apply a Python style guide
+#   - id: yapf
+#   exclude: 'migrations|tests'
+#     args: ['--style=.style.yapf', '--parallel', '--in-place']
+#     args: ['--style={based_on_style:pep8,indent_width:2,continuation_indent_width:2}',
+#            '--parallel',
+#            '--in-place']
