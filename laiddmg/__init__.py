@@ -14,5 +14,6 @@ from .common_parser import (
 
 # Utils
 from .utils import (
+  set_output_dir,
   measure_duration_time,
 )
