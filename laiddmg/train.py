@@ -23,8 +23,9 @@ def main():
   args = set_output_dir(model_type, args)
   logger = logging.get_logger(__name__, os.path.join(args.output_dir, 'out.log'))
 
-  logger.info('logger start')
   logger.info(args)
+  logger.info(f'model type: {model_type}')
+  logger.info(f'use device: {args.device}')
 
   end_time = datetime.now()
   measure_duration_time(end_time - start_time)

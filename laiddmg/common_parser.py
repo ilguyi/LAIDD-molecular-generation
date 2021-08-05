@@ -1,5 +1,7 @@
 import argparse
 
+import torch
+
 from argparse import ArgumentParser
 
 from .models.char_rnn.trainer import train_parser as char_rnn_parser
@@ -55,8 +57,21 @@ def get_train_parser() -> ArgumentParser:
   return parser
 
 
+def setup_devices(args) -> torch.device:
+  logger.info('PyTorch: setting up devices')
+  device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+  logger.info(f'set torch.device: {device}')
+
+  if device.type == 'cuda':
+    torch.cuda.set_device(device)
+
+  return device
+
+
 def get_train_args() -> argparse.Namespace:
   parser = get_train_parser()
   args = parser.parse_args()
+
+  args.device = setup_devices(args)
 
   return args
