@@ -5,12 +5,14 @@
 
 __version__ = '0.0.1'
 
+# Parser
+from .common_parser import (
+  get_train_args,
+  # get_generate_args,
+)
 
-# logging.py
-from .logging import get_logger
 
-
-# utils.py
+# Utils
 from .utils import (
   measure_duration_time,
 )
