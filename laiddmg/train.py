@@ -11,6 +11,8 @@ from laiddmg import (
   CharRNNConfig,
   VAEConfig,
   Tokenizer,
+  CharRNNModel,
+  VAEModel,
   measure_duration_time,
 )
 
@@ -34,11 +36,24 @@ def main():
   if model_type == 'char_rnn':
     config = CharRNNConfig()
     tokenizer = Tokenizer()
+    model = CharRNNModel(config)
   else:
     config = VAEConfig()
     tokenizer = Tokenizer()
+    model = VAEModel(config)
   print(config)
   print(tokenizer('c1cccc1c'))
+  print(model)
+
+  print(model.device)
+  print(model.dtype)
+  print(model.num_parameters())
+
+  inputs = tokenizer(['c1cccc1c', 'c1ccc1c'])
+  outputs, hiddens = model(**inputs)
+  print(outputs.shape)
+  print(hiddens[0].shape)
+  print(hiddens[1].shape)
 
   end_time = datetime.now()
   measure_duration_time(end_time - start_time)

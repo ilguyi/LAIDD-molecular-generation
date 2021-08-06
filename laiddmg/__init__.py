@@ -18,6 +18,10 @@ from .models.vae.configuration import VAEConfig
 # Tokenizer
 from .tokenization_utils import Tokenizer
 
+# Models
+from .models.char_rnn.modeling import CharRNNModel
+from .models.vae.modeling import VAEModel
+
 # Utils
 from .utils import (
   set_output_dir,
