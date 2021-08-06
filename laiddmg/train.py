@@ -10,6 +10,7 @@ from laiddmg import (
   set_output_dir,
   CharRNNConfig,
   VAEConfig,
+  Tokenizer,
   measure_duration_time,
 )
 
@@ -32,9 +33,12 @@ def main():
   assert model_type in ['char_rnn', 'vae']
   if model_type == 'char_rnn':
     config = CharRNNConfig()
+    tokenizer = Tokenizer()
   else:
     config = VAEConfig()
+    tokenizer = Tokenizer()
   print(config)
+  print(tokenizer('c1cccc1c'))
 
   end_time = datetime.now()
   measure_duration_time(end_time - start_time)

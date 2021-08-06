@@ -15,6 +15,9 @@ from .common_parser import (
 from .models.char_rnn.configuration import CharRNNConfig
 from .models.vae.configuration import VAEConfig
 
+# Tokenizer
+from .tokenization_utils import Tokenizer
+
 # Utils
 from .utils import (
   set_output_dir,
