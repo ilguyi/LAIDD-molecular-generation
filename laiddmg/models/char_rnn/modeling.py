@@ -26,7 +26,7 @@ class CharRNNModel(BaseModel):
     self.output_dim = self.vocab_size
 
     self.embeddings = nn.Embedding(self.vocab_size, self.embedding_dim,
-                                   padding_idx=0)
+                                   padding_idx=self.padding_value)
     self.lstm = nn.LSTM(self.embedding_dim, self.hidden_dim,
                         self.num_layers,
                         batch_first=True,
@@ -35,12 +35,12 @@ class CharRNNModel(BaseModel):
 
   def forward(
     self,
-    input_ids: torch.Tensor,  # [batch_size, seq_len]
-    lengths: torch.Tensor,  # [batch_size,]
-    hiddens: Tuple[torch.Tensor] = None,  # [num_layers, batch_size, hidden_dim]
+    input_ids: torch.Tensor,  # (batch_size, seq_len)
+    lengths: torch.Tensor,  # (batch_size,)
+    hiddens: Tuple[torch.Tensor] = None,  # (num_layers, batch_size, hidden_dim)
     **kwargs,
   ) -> Tuple[torch.Tensor, Tuple[torch.Tensor]]:
-    x = self.embeddings(input_ids)  # x: [batch_size, seq_len, embedding_dim]
+    x = self.embeddings(input_ids)  # x: (batch_size, seq_len, embedding_dim)
     x = rnn_utils.pack_padded_sequence(
       x,
       lengths.cpu(),
@@ -48,11 +48,11 @@ class CharRNNModel(BaseModel):
       enforce_sorted=False,
     )
     x, hiddens = self.lstm(x, hiddens)
-    # hiddens: (h, c) / [num_layers, batch_size, hidden_dim], respectively
+    # hiddens: (h, c); (num_layers, batch_size, hidden_dim), respectively
     x, _ = rnn_utils.pad_packed_sequence(
       x,
       batch_first=True,
-    )  # x: [batch_size, seq_len, hidden_dim]
-    outputs = self.fc(x)  # outputs: [batch_size, seq_len, vocab_size]
+    )  # x: (batch_size, seq_len, hidden_dim)
+    outputs = self.fc(x)  # outputs: (batch_size, seq_len, vocab_size)
 
     return outputs, hiddens
