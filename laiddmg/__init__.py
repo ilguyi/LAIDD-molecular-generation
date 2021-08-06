@@ -11,6 +11,9 @@ from .common_parser import (
   # get_generate_args,
 )
 
+# Configs
+from .models.char_rnn.configuration import CharRNNConfig
+from .models.vae.configuration import VAEConfig
 
 # Utils
 from .utils import (

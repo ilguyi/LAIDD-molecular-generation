@@ -8,6 +8,8 @@ from datetime import datetime
 from laiddmg import (
   get_train_args,
   set_output_dir,
+  CharRNNConfig,
+  VAEConfig,
   measure_duration_time,
 )
 
@@ -26,6 +28,13 @@ def main():
   logger.info(args)
   logger.info(f'model type: {model_type}')
   logger.info(f'use device: {args.device}')
+
+  assert model_type in ['char_rnn', 'vae']
+  if model_type == 'char_rnn':
+    config = CharRNNConfig()
+  else:
+    config = VAEConfig()
+  print(config)
 
   end_time = datetime.now()
   measure_duration_time(end_time - start_time)

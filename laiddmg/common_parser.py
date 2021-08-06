@@ -31,10 +31,6 @@ def add_train_args(parser: ArgumentParser) -> None:
 
   parser = parser.add_argument_group('train')
 
-  parser.add_argument('--config_path',
-                      type=str,
-                      required=True,
-                      help='directory name where to load config file path')
   parser.add_argument('--dataset_path',
                       default='../datasets',
                       type=str,
