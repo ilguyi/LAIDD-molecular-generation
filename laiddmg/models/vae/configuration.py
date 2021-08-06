@@ -13,9 +13,13 @@ class VAEConfig():
     tokenizer: str = 'moses',
     vocab_size: int = 30,
     embedding_dim: int = 30,
-    hidden_dim: int = 768,
-    num_layers: int = 3,
-    dropout: float = 0.2,
+    encoder_hidden_dim: int = 768,
+    encoder_num_layers: int = 3,
+    encoder_dropout: float = 0.2,
+    latent_dim: int = 128,
+    decoder_hidden_dim: int = 768,
+    decoder_num_layers: int = 3,
+    decoder_dropout: float = 0.2,
     padding_value: int = 0,
     **kwargs,
   ):
@@ -23,7 +27,11 @@ class VAEConfig():
     self.tokenizer = tokenizer
     self.vocab_size = vocab_size
     self.embedding_dim = embedding_dim
-    self.hidden_dim = hidden_dim
-    self.num_layers = num_layers
-    self.dropout = dropout
+    self.encoder_hidden_dim = encoder_hidden_dim
+    self.encoder_num_layers = encoder_num_layers
+    self.encoder_dropout = encoder_dropout
+    self.latent_dim = latent_dim
+    self.decoder_hidden_dim = decoder_hidden_dim
+    self.decoder_num_layers = decoder_num_layers
+    self.decoder_dropout = decoder_dropout
     self.padding_value = padding_value
