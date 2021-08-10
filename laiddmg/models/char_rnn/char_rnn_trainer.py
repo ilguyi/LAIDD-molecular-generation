@@ -1,6 +1,10 @@
 from argparse import ArgumentParser
 
+# import torch
+# import torch.nn as nn
+# import torch.optim as optim
 
+from ...trainer import Trainer
 from ... import logging
 
 
@@ -25,3 +29,11 @@ def train_parser(parser: ArgumentParser) -> ArgumentParser:
   logger.info('char_rnn_parser')
 
   return char_rnn_parser
+
+
+class CharRNNTrainer(Trainer):
+
+  def __init__(self, **kwargs):
+    super(CharRNNTrainer, self).__init__(**kwargs)
+
+    pass

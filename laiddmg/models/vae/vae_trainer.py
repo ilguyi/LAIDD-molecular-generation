@@ -1,6 +1,10 @@
 from argparse import ArgumentParser
 
+# import torch
+# import torch.nn as nn
+# import torch.optim as optim
 
+from ...trainer import Trainer
 from ... import logging
 
 
@@ -25,3 +29,11 @@ def train_parser(parser: ArgumentParser) -> ArgumentParser:
   logger.info('vae_parser')
 
   return vae_parser
+
+
+class VAETrainer(Trainer):
+
+  def __init__(self, **kwargs):
+    super(VAETrainer, self).__init__(**kwargs)
+
+    pass

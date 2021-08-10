@@ -4,8 +4,8 @@ import torch
 
 from argparse import ArgumentParser
 
-from .models.char_rnn.trainer import train_parser as char_rnn_parser
-from .models.vae.trainer import train_parser as vae_parser
+from .models.char_rnn.char_rnn_trainer import train_parser as char_rnn_parser
+from .models.vae.vae_trainer import train_parser as vae_parser
 
 from . import logging
 
