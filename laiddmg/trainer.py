@@ -1,7 +1,7 @@
 import argparse
-# from abc import abstractmethod
-# from typing import Dict, Union, Any, Optional
-from typing import Optional
+import os
+from abc import abstractmethod
+from typing import Dict, Union, Any, Optional
 
 import torch
 import torch.nn as nn
@@ -68,6 +68,10 @@ class Trainer:
 
     args_and_config_to_json_files(self.args, self.model.config)
 
+  @abstractmethod
+  def _collate_fn(self, **kwargs):
+    pass
+
   def get_train_dataloader(self) -> DataLoader:
     if self.train_dataset is None:
       raise ValueError('Trainer: training requires a `train_dataset`.')
@@ -76,6 +80,32 @@ class Trainer:
         self.train_dataset,
         batch_size=self.args.train_batch_size,
         shuffle=True,
-        # collate_fn=self._collate_fn,
+        collate_fn=self._collate_fn,
         num_workers=16,
     )
+
+  def _prepare_inputs(
+    self,
+    inputs: Dict[str, Union[torch.Tensor, Any]],
+  ) -> Dict[str, Union[torch.Tensor, Any]]:
+    # This function is borrowed from `huggingface.transformer`
+    for k, v in inputs.items():
+      if isinstance(v, torch.Tensor):
+        inputs[k] = v.to(self.args.device)
+
+    return inputs
+
+  @abstractmethod
+  def train(self):
+    pass
+
+  def save_model(self, epoch: int):
+    checkpoint_dir = os.path.join(self.args.output_dir)
+    ckpt_name = f'ckpt_{epoch:03d}.pt'
+    ckpt_path = os.path.join(checkpoint_dir, ckpt_name)
+
+    torch.save({'epoch': epoch,
+                'global_step': self.global_step,
+                'model_state_dict': self.model.state_dict()},
+               ckpt_path)
+    logger.info(f'saved {self.model.config.model_type} model at epoch {epoch}.')
