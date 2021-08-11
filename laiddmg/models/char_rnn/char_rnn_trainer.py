@@ -4,7 +4,6 @@ from typing import List, Dict, Union
 import torch
 import torch.nn as nn
 import torch.optim as optim
-# from torch.utils.data import DataLoader
 
 from ...trainer import Trainer
 from ... import logging
@@ -20,7 +19,7 @@ def train_parser(parser: ArgumentParser) -> ArgumentParser:
   char_rnn_parser = parser.add_parser('char_rnn')
 
   char_rnn_parser.add_argument('--num_train_epochs',
-                               default=100,
+                               default=50,
                                type=int,
                                help='number of epochs for training')
   char_rnn_parser.add_argument('--train_batch_size',

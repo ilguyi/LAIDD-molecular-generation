@@ -12,7 +12,7 @@ class CharRNNConfig():
     self,
     tokenizer: str = 'moses',
     vocab_size: int = 30,
-    embedding_dim: int = 30,
+    embedding_dim: int = 32,
     hidden_dim: int = 768,
     num_layers: int = 3,
     dropout: float = 0.2,
