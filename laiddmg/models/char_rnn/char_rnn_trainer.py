@@ -103,15 +103,15 @@ class CharRNNTrainer(Trainer):
     optimizer: 'optim',
     lr_scheduler: 'optim.lr_scheduler',
   ):
-
     self.model.train()
 
     for i, data in enumerate(self.train_dataloader):
-      if i > 10:
-        break
       loss = self._train_step(data, loss_fn, optimizer)
 
-      logger.info(f'{loss:.4f}')
+      logger.info(
+        f'{epoch} Epochs | {i + 1}/{self.args.num_training_steps_per_epoch} | loss: {loss:.4g} | '
+        f'lr: {lr_scheduler.get_last_lr()[0]:.4g}'
+      )
 
   def train(self):
 
@@ -125,8 +125,6 @@ class CharRNNTrainer(Trainer):
       logger.info(f'Start training: {epoch} Epoch')
 
       self._train_epoch(epoch, loss_fn, optimizer, lr_scheduler)
-
       self.save_model(epoch)
-      # self.save_optimizer_and_scheduler(epoch, optimizer, lr_scheduler)
 
     logger.info('Training done!!')
