@@ -11,7 +11,7 @@ from collections import OrderedDict
 # Parser
 from .common_parser import (
   get_train_args,
-  # get_generate_args,
+  get_generate_args,
 )
 
 # Configs
@@ -36,6 +36,7 @@ from .datasets import get_dataset
 # Utils
 from .utils import (
   set_output_dir,
+  set_output_dir_for_generation,
   measure_duration_time,
 )
 

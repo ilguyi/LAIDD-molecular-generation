@@ -42,6 +42,20 @@ def train_parser(parser: ArgumentParser) -> ArgumentParser:
   return char_rnn_parser
 
 
+def generate_parser(parser: ArgumentParser) -> ArgumentParser:
+  if parser is None:
+    parser = ArgumentParser()
+
+  char_rnn_parser = parser.add_parser('char_rnn')
+
+  char_rnn_parser.add_argument('--batch_size_for_generation',
+                               default=128,
+                               type=int,
+                               help='batch size for generation')
+
+  return char_rnn_parser
+
+
 class CharRNNTrainer(Trainer):
 
   def __init__(self, **kwargs):

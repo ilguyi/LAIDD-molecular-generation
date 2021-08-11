@@ -32,7 +32,19 @@ def train_parser(parser: ArgumentParser) -> ArgumentParser:
                           type=float,
                           help='learning rate for training')
 
-  logger.info('vae_parser')
+  return vae_parser
+
+
+def generate_parser(parser: ArgumentParser) -> ArgumentParser:
+  if parser is None:
+    parser = ArgumentParser()
+
+  vae_parser = parser.add_parser('vae')
+
+  vae_parser.add_argument('--batch_size_for_generation',
+                          default=128,
+                          type=int,
+                          help='batch size for generation')
 
   return vae_parser
 

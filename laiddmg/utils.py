@@ -32,6 +32,18 @@ def set_output_dir(model_type: str, args: argparse.Namespace) -> argparse.Namesp
   return args
 
 
+def set_output_dir_for_generation(model_type: str, args: argparse.Namespace) -> argparse.Namespace:
+  if args.output_dir is not None:
+    output_dir = os.path.join(args.checkpoint_dir, args.output_dir)
+  else:
+    output_dir = os.path.join(args.checkpoint_dir, 'generate')
+
+  logger.info(f'output_dir: {output_dir}')
+  args.output_dir = output_dir
+
+  return args
+
+
 def measure_duration_time(duration_time: datetime.timedelta):
   days = duration_time.days
   seconds = duration_time.seconds
