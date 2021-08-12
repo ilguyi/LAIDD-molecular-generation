@@ -1,9 +1,11 @@
 import os
 from abc import abstractmethod
-from typing import Any, Union
+from typing import List, Union, Any
 
 import torch
 import torch.nn as nn
+
+from .tokenization_utils import Tokenizer
 
 from . import logging
 
@@ -60,3 +62,22 @@ class BaseModel(nn.Module):
       return model, epoch, global_step
     else:
       return model
+
+  def postprocessing(
+    self,
+    generated_sequences: torch.LongTensor,
+    tokenizer: Tokenizer,
+  ) -> List[List[int]]:
+    pad_index = tokenizer.convert_token_to_id(tokenizer.pad_token)
+    end_index = tokenizer.convert_token_to_id(tokenizer.end_token)
+    new_sequences = []
+    for sequence in generated_sequences:
+      new_seq = []
+      for token in sequence:
+        if token.item() not in [pad_index, end_index]:
+          new_seq.append(token.item())
+        else:
+          break
+      new_sequences.append(new_seq)
+
+    return new_sequences

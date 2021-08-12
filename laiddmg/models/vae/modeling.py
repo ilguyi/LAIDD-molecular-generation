@@ -1,10 +1,12 @@
-from typing import Tuple
+from typing import List, Tuple, Union
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.nn.utils.rnn as rnn_utils
 
 from .configuration import VAEConfig
+from ...tokenization_utils import Tokenizer
 from ...modeling_utils import BaseModel
 from ... import logging
 
@@ -151,3 +153,55 @@ class VAEModel(BaseModel):
     y = self.decoder(input_ids, lengths, z)  # y: (batch_size, seq_len, vocab_size)
 
     return y, z_mu, z_logvar
+
+  def sample_gaussian_dist(self, batch_size: int):
+    return torch.randn(batch_size, self.latent_dim).to(self.device)
+
+  @torch.no_grad()
+  def generate(
+    self,
+    tokenizer: Tokenizer = None,
+    max_length: int = 128,
+    num_return_sequences: int = 1,
+    skip_special_tokens: bool = False,
+    **kwargs,
+  ) -> Union[List[List[int]], List[List[str]]]:
+
+    z = kwargs.pop('z', None)
+    z = z if z is not None else self.sample_gaussian_dist(num_return_sequences)
+    assert z.shape == (num_return_sequences, self.latent_dim)  # z: [batch_size, latent_dim]
+    z_ = z.unsqueeze(1)  # z_: [batch_size, 1, latent_dim]
+
+    initial_inputs = torch.full((num_return_sequences, 1),
+                                tokenizer.convert_token_to_id(tokenizer.start_token),
+                                dtype=torch.long,
+                                device=self.device)
+    generated_sequences = initial_inputs
+    input_ids = initial_inputs  # input_ids: [batch_size, 1]
+
+    # z -> initial hiddens
+    hiddens = self.decoder.z2hidden(z)  # hiddens: [batch_size, hidden_dim]
+    hiddens = hiddens.unsqueeze(0).repeat(self.config.decoder_num_layers, 1, 1)
+    # hiddens: [decoder_num_layers, batch_size, hidden_dim]
+
+    for i in range(max_length + 1):
+      x = self.decoder.embeddings(input_ids)  # x: [batch_size, 1, embedding_dim]
+      x = torch.cat((x, z_), dim=-1)  # x: [batch_size, 1, embedding_dim + latent_dim]
+      x, hiddens = self.decoder.gru(x, hiddens)  # x: [batch_size, 1, hidden_dim]
+      logits = self.decoder.fc(x)  # logits: [batch_size, 1, vocab_size]
+      next_token_logits = logits.squeeze(1)  # next_token_logits: [batch_size, vocab_size]
+
+      probabilities = F.softmax(next_token_logits, dim=-1)  # probabilities: [batch_size, vocab_size]
+      next_tokens = torch.multinomial(probabilities, num_samples=1)
+      # next_tokens: [batch_size, 1]
+
+      input_ids = next_tokens
+      generated_sequences = torch.cat([generated_sequences, next_tokens], dim=1)
+
+    generated_sequences = self.postprocessing(generated_sequences, tokenizer)
+
+    generated_SMILES = []
+    for sequence in generated_sequences:
+      generated_SMILES.append(tokenizer.decode(sequence, skip_special_tokens))
+
+    return generated_SMILES
