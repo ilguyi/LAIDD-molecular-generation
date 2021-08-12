@@ -1,10 +1,11 @@
+from ...configuration_utils import ModelConfig
 from ... import logging
 
 
 logger = logging.get_logger(__name__)
 
 
-class CharRNNConfig():
+class CharRNNConfig(ModelConfig):
 
   model_type: str = 'char_rnn'
 
