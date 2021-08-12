@@ -5,7 +5,7 @@ import json
 import os
 import random
 import numpy as np
-from typing import Any
+from typing import List, Any
 
 import torch
 
@@ -88,6 +88,16 @@ def args_and_config_to_json_files(
 ):
   args_to_json_file(args)
   config_to_json_file(config, args.output_dir)
+
+
+def get_batch_size_list_for_generate(args: argparse.Namespace) -> List[int]:
+  num_iters, remainder = divmod(args.num_generation, args.batch_size_for_generation)
+  if remainder != 0:
+    batch_size_list = [args.batch_size_for_generation] * num_iters + [remainder]
+  else:
+    batch_size_list = [args.batch_size_for_generation] * num_iters
+
+  return batch_size_list
 
 
 # This code (`Annealingschedules` class) that is borrowed from `https://github.com/haofuml/cyclical_annealing`

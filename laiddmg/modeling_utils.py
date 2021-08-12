@@ -1,5 +1,6 @@
-
+import os
 from abc import abstractmethod
+from typing import Any, Union
 
 import torch
 import torch.nn as nn
@@ -39,3 +40,23 @@ class BaseModel(nn.Module):
   @abstractmethod
   def generate(self, **kwargs):
     pass
+
+  @classmethod
+  def from_pretrained(
+    cls,
+    config: Any,
+    ckpt_path: Union[str, os.PathLike],
+    output_info: bool = False
+  ):
+    model = cls(config)
+    state_dict = torch.load(ckpt_path, map_location='cpu')
+
+    epoch = state_dict['epoch']
+    global_step = state_dict['global_step']
+    model.load_state_dict(state_dict['model_state_dict'])
+    logger.info('All keys matched successfully and success to load')
+
+    if output_info:
+      return model, epoch, global_step
+    else:
+      return model

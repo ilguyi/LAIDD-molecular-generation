@@ -37,6 +37,7 @@ from .datasets import get_dataset
 from .utils import (
   set_output_dir,
   set_output_dir_for_generation,
+  get_batch_size_list_for_generate,
   measure_duration_time,
 )
 
