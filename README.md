@@ -10,15 +10,15 @@ LAIDD 강의의 일환으로 제작되었습니다.**
 <img src="https://render.githubusercontent.com/render/math?math=10^60">
 으로 엄청나게 방대하여
 이렇게 큰 공간에서 원하는 화합물을 찾아내는 것은 매우 어렵습니다.
-그렇기 때문에 마치 바다 모래사장에서 바늘 찾기라는 비유를 하기도 합니다.
+그렇기 때문에 마치 넓은 바다의 모래사장에서 바늘 찾기라는 비유를 하기도 합니다.
 
 최근 생성모델(Deep generative models)의 급속한 발전으로
 이미지 데이터, 텍스트 데이터, 그래프 데이터 등 다양한 데이터들을
 실제와 비슷하게 만들어 내는데 성공하고 있습니다.
 ML(Machine Leanring) field에서 만들어진 생성모델들을 Chemisty field에
-적용하여 De novo generation 좋은 결과를 만들어 냈습니다.
+적용하여 de novo generation 분야에서 좋은 결과를 만들어 냈습니다.
 
-이 강의는 De novo molecular generation 모델의 기본 모델이라 할 수 있는
+이 강의는 de novo molecular generation 모델의 기본 모델이라 할 수 있는
 RNN(Recurrent Neural Networks) 모델과 VAE(Variational AutoEncoders) 모델을
 알아보고 직접 구현해보는 것을 목표로 합니다.
 두 모델 모두 SMILES 데이터를 기반으로 만들어졌습니다.
