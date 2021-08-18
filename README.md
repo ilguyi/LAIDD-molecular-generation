@@ -47,6 +47,17 @@ $ conda install -c conda-forge rdkit
 
 ## Installation
 
+### 가상환경 만들기
+
+이 패키지는 [`anaconda`](https://anaconda.org/) 환경에서 실행하는 것을 추천합니다.
+먼저 `conda`를 이용하여 가상환경을 만듭니다.
+```bash
+$ conda create --name laiddmg python=3.7
+$ conda activate laiddmg
+```
+
+`git clone`을 통해 이 패키지를 다운 받습니다.
+그 후 `pip install .`으로 패키지 설치를 합니다.
 ```bash
 $ git clone https://github.com/ilguyi/LAIDD-molecule-generation.git
 $ cd molgen
