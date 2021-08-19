@@ -10,10 +10,10 @@ from .models.vae.vae_trainer import train_parser as vae_parser
 from .models.char_rnn.char_rnn_trainer import generate_parser as char_rnn_g_parser
 from .models.vae.vae_trainer import generate_parser as vae_g_parser
 
-from . import logging
+from . import logging_utils
 
 
-logger = logging.get_logger(__name__)
+logger = logging_utils.get_logger(__name__)
 
 
 def add_common_args(parser: ArgumentParser) -> None:

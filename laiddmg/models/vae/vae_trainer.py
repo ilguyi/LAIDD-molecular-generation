@@ -7,10 +7,10 @@ import torch.optim as optim
 
 from ...trainer import Trainer
 from ...utils import AnnealingSchedules
-from ... import logging
+from ... import logging_utils
 
 
-logger = logging.get_logger(__name__)
+logger = logging_utils.get_logger(__name__)
 
 
 def train_parser(parser: ArgumentParser) -> ArgumentParser:

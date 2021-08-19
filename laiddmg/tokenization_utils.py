@@ -6,10 +6,10 @@ import numpy as np
 import torch
 import torch.nn.utils.rnn as rnn_utils
 
-from . import logging
+from . import logging_utils
 
 
-logger = logging.get_logger(__name__)
+logger = logging_utils.get_logger(__name__)
 
 SPEICIAL_TOKENS = OrderedDict([
   ('pad_token', '<PAD>'),

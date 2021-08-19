@@ -9,14 +9,14 @@ from typing import List, Any
 
 import torch
 
-from . import logging
+from . import logging_utils
 
 
 OUTPUT_DIR = 'outputs'
 TRAINING_ARGS = 'training_ags.json'
 CONFIG_NAME = 'config.json'
 
-logger = logging.get_logger(__name__)
+logger = logging_utils.get_logger(__name__)
 
 
 def set_output_dir(model_type: str, args: argparse.Namespace) -> argparse.Namespace:

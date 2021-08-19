@@ -8,9 +8,9 @@ import torch.nn.utils.rnn as rnn_utils
 from .configuration import CharRNNConfig
 from ...tokenization_utils import Tokenizer
 from ...modeling_utils import BaseModel
-from ... import logging
+from ... import logging_utils
 
-logger = logging.get_logger(__name__)
+logger = logging_utils.get_logger(__name__)
 
 
 class CharRNNModel(BaseModel):

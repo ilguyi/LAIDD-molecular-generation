@@ -16,10 +16,10 @@ from .utils import (
 )
 
 
-from . import logging
+from . import logging_utils
 
 
-logger = logging.get_logger(__name__)
+logger = logging_utils.get_logger(__name__)
 
 
 class Trainer:

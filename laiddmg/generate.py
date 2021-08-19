@@ -17,7 +17,7 @@ from laiddmg import (
   VAEModel,
 )
 
-from . import logging
+from . import logging_utils
 
 
 def main():
@@ -27,7 +27,7 @@ def main():
   args = get_generate_args()
   model_type = sys.argv[1]
   args = set_output_dir_for_generation(model_type, args)
-  logger = logging.get_logger(__name__, os.path.join(args.output_dir, 'out.log'))
+  logger = logging_utils.get_logger(__name__, os.path.join(args.output_dir, 'out.log'))
 
   logger.info(f'args: {args}')
   logger.info(f'model type: {model_type}')
