@@ -16,7 +16,7 @@ class VAEConfig(ModelConfig):
     embedding_dim: int = 32,
     encoder_hidden_dim: int = 512,
     encoder_num_layers: int = 1,
-    encoder_dropout: float = 0.2,
+    encoder_dropout: float = 0.0,
     latent_dim: int = 128,
     decoder_hidden_dim: int = 512,
     decoder_num_layers: int = 3,
