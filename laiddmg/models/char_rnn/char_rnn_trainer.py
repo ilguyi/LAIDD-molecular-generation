@@ -127,9 +127,11 @@ class CharRNNTrainer(Trainer):
         f'lr: {lr_scheduler.get_last_lr()[0]:.4g}'
       )
 
+    lr_scheduler.step()
+
   def train(self):
 
-    loss_fn = nn.CrossEntropyLoss()
+    loss_fn = nn.CrossEntropyLoss(ignore_index=self.tokenizer.padding_value)
     optimizer = optim.Adam(self.model.parameters(), lr=self.args.lr)
     lr_scheduler = optim.lr_scheduler.StepLR(optimizer,
                                              self.args.step_size,
