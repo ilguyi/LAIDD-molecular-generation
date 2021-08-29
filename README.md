@@ -27,6 +27,9 @@ text(ASCII code) 기반 seqeunce 데이터로 표현하는 방법입니다.
 RNN모델은 이러한 seqeunce 데이터를 잘 다룰 수 있어서 SMILES기반 생성모델
 또는 QSAR모델등에 사용될 수 있습니다.
 
+* Final update: 2021. 08. 29.
+* All right reserved @ 이일구 (Il GU Yi) 2021
+
 
 ## Getting Started
 
@@ -34,14 +37,15 @@ RNN모델은 이러한 seqeunce 데이터를 잘 다룰 수 있어서 SMILES기�
 
 * `python` >= 3.7
 * [`pytorch`](https://pytorch.org) >= 1.7
-* `numpy`, `pandas`
+* `numpy`, `pandas`, `matplotlib`
+* `jupyter`, `easydict`
 * `rdkit`
   * 이 패키지를 설치할때 `rdkit`은 자동으로 설치되지 않아서 따로 설치를 해야 합니다.
   * `rdkit` install manual: [https://www.rdkit.org/docs/Install.html](https://www.rdkit.org/docs/Install.html)
 
 ##### `rdkit` 설치 방법 (`conda`이용 하여 설치를 추천)
 ```bash
-$ conda install -c conda-forge rdkit
+$ conda install -c conda-forge rdkit=2021.03.1
 ```
 
 
@@ -66,3 +70,23 @@ $ pip install .
 
 
 ## Quickstart
+
+### Jupyter notebook
+
+간단하게 모든 과정을 하나씩 실행해 볼 수 있게
+jupyter notebook 형태의 파일을 준비했습니다.
+[`jupyter_char_rnn.ipynb`](https://github.com/ilguyi/LAIDD-molecule-generation/blob/main/laiddmg/jupyter_char_rnn.ipynb),
+[`jupyter_vae.ipynb`](https://github.com/ilguyi/LAIDD-molecule-generation/blob/main/laiddmg/jupyter_vae.ipynb)
+파일은 각각 CharRNN모델, ChemicalVAE모델을 실행할 수 있습니다.
+Jupyter 파일 역시 해당 패키지를 설치해야 이용할 수 있습니다.
+
+### Command execution
+
+이 github 저장소를 clone 받고 패키지를 설치하면 두가지 command가 생성됩니다.
+`laiddmg-train` command는 학습 데이터를 받아 각 모델(`CharRNN`, `ChemicalVAE`)들을 학습시키는 명령어입니다.
+`laiddmg-generate` command는 최종 학습된 모델을 불러와 새로운 분자를 생성하는 명령어입니다.
+
+
+## Author
+
+이일구 (Il GU Yi)

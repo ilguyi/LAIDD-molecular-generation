@@ -62,7 +62,6 @@ setup(
       'console_scripts': [
         'laiddmg-train = laiddmg.train:main',
         'laiddmg-generate = laiddmg.generate:main',
-        'laiddmg-eval= laiddmg.eval:main',
       ]
     },
 )
