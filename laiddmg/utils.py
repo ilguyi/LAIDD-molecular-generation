@@ -9,7 +9,7 @@ from typing import List, Any
 
 import torch
 
-from . import logging_utils
+from laiddmg import logging_utils
 
 
 OUTPUT_DIR = 'outputs'

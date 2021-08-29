@@ -41,6 +41,9 @@ from .utils import (
   measure_duration_time,
 )
 
+# Logging utils
+from . import logging_utils
+
 
 TRAINER_MAPPING = OrderedDict(
   [
