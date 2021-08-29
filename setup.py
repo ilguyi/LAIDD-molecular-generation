@@ -52,6 +52,8 @@ setup(
       # 'scikit-learn',
       # 'scipy',
       'flake8',
+      'easydict',
+      'matplotlib',
       'pre-commit',
       'tensorboard',
       'tqdm',
