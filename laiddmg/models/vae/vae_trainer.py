@@ -138,8 +138,8 @@ class VAETrainer(Trainer):
       update_unit='epoch',
       num_training_steps=self.args.num_training_steps,
       num_training_steps_per_epoch=self.args.num_training_steps_per_epoch,
-      # start_weight=0.0,
-      # stop_weight=0.05,
+      start_weight=0.0,
+      stop_weight=0.05,
       # n_cycle=1,
       # ratio=1.0,
     )
