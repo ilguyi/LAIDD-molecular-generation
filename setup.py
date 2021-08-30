@@ -25,7 +25,7 @@ setup(
     version=find_version('laiddmg/__init__.py'),
     author='Il Gu Yi',
     author_email='ilgu.yi.219@gmail.com',
-    url='https://github.com/ilguyi/LAIDD-molecule-generation',
+    url='https://github.com/ilguyi/LAIDD-molecular-generation',
     license='MIT',
     description='Molecular generation modules for LAIDD Lecture',
     long_description=read_long_description('README.md'),
