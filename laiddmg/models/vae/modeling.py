@@ -35,7 +35,7 @@ class Encoder(nn.Module):
                       self.encoder_hidden_dim,
                       self.encoder_num_layers,
                       batch_first=True,
-                      dropout=self.encoder_dropout)
+                      dropout=self.encoder_dropout if self.encoder_num_layers > 1 else 0)
     self.fc = nn.Linear(self.encoder_hidden_dim, self.latent_dim * 2)
 
   def forward(
@@ -85,7 +85,7 @@ class Decoder(nn.Module):
                       self.decoder_hidden_dim,
                       self.decoder_num_layers,
                       batch_first=True,
-                      dropout=self.decoder_dropout)
+                      dropout=self.decoder_dropout if self.decoder_num_layers > 1 else 0)
     self.z2hidden = nn.Linear(self.latent_dim, self.decoder_hidden_dim)
     self.fc = nn.Linear(self.decoder_hidden_dim, self.output_dim)
 
