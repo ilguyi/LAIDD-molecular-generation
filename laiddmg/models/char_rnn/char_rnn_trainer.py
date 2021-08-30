@@ -122,10 +122,11 @@ class CharRNNTrainer(Trainer):
     for i, data in enumerate(self.train_dataloader):
       loss = self._train_step(data, loss_fn, optimizer)
 
-      logger.info(
-        f'{epoch} Epochs | {i + 1}/{self.args.num_training_steps_per_epoch} | loss: {loss:.4g} | '
-        f'lr: {lr_scheduler.get_last_lr()[0]:.4g}'
-      )
+      if self.global_step % self.args.log_steps == 0:
+        logger.info(
+          f'{epoch} Epochs | {i + 1}/{self.args.num_training_steps_per_epoch} | loss: {loss:.4g} | '
+          f'lr: {lr_scheduler.get_last_lr()[0]:.4g}'
+        )
 
     lr_scheduler.step()
 

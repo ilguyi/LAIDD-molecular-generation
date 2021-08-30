@@ -122,10 +122,11 @@ class VAETrainer(Trainer):
     for i, data in enumerate(self.train_dataloader):
       total_loss, reconstruction_loss, kl_loss = self._train_step(data, loss_fn, optimizer)
 
-      logger.info(
-        f'{epoch} Epochs | {i + 1}/{self.args.num_training_steps_per_epoch} | reconst_loss: {reconstruction_loss:.4g} '
-        f'kl_loss: {kl_loss:.4g}, total_loss: {total_loss:.4g}, kl_annealing: {self.kl_annealing(self.global_step -1):.4g} | '
-      )
+      if self.global_step % self.args.log_steps == 0:
+        logger.info(
+          f'{epoch} Epochs | {i + 1}/{self.args.num_training_steps_per_epoch} | reconst_loss: {reconstruction_loss:.4g} '
+          f'kl_loss: {kl_loss:.4g}, total_loss: {total_loss:.4g}, kl_annealing: {self.kl_annealing(self.global_step -1):.4g}'
+        )
 
   def train(self):
 
