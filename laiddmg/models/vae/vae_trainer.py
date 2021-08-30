@@ -106,6 +106,8 @@ class VAETrainer(Trainer):
     total_loss = reconstruction_loss + kl_annealing_weight * kl_loss
 
     total_loss.backward()
+    nn.utils.clip_grad_norm_(self.model.parameters(),
+                             max_norm=50)
     optimizer.step()
     self.global_step += 1
 
