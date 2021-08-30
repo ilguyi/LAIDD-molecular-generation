@@ -63,8 +63,8 @@ $ conda activate laiddmg
 `git clone`을 통해 이 패키지를 다운 받습니다.
 그 후 `pip install .`으로 패키지 설치를 합니다.
 ```bash
-$ git clone https://github.com/ilguyi/LAIDD-molecule-generation.git
-$ cd LAIDD-molecule-generation
+$ git clone https://github.com/ilguyi/LAIDD-molecular-generation.git
+$ cd LAIDD-molecular-generation
 $ pip install .
 ```
 
@@ -75,8 +75,8 @@ $ pip install .
 
 간단하게 모든 과정을 하나씩 실행해 볼 수 있게
 jupyter notebook 형태의 파일을 준비했습니다.
-[`jupyter_char_rnn.ipynb`](https://github.com/ilguyi/LAIDD-molecule-generation/blob/main/laiddmg/jupyter_char_rnn.ipynb),
-[`jupyter_vae.ipynb`](https://github.com/ilguyi/LAIDD-molecule-generation/blob/main/laiddmg/jupyter_vae.ipynb)
+[`jupyter_char_rnn.ipynb`](https://github.com/ilguyi/LAIDD-moleculra-generation/blob/main/laiddmg/jupyter_char_rnn.ipynb),
+[`jupyter_vae.ipynb`](https://github.com/ilguyi/LAIDD-moleculra-generation/blob/main/laiddmg/jupyter_vae.ipynb)
 파일은 각각 CharRNN모델, ChemicalVAE모델을 실행할 수 있습니다.
 Jupyter 파일 역시 이 저장소를 설치해야 이용할 수 있습니다.
 
