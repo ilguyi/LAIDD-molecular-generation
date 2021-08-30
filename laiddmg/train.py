@@ -45,7 +45,7 @@ def main():
     model = VAEModel(config)
 
   print(config)
-  print(tokenizer('c1cccc1c'))
+  print(tokenizer('c1ccccc1'))
   print(model)
 
   print(model.device)
