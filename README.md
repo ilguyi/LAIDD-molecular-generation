@@ -78,7 +78,7 @@ jupyter notebook 형태의 파일을 준비했습니다.
 [`jupyter_char_rnn.ipynb`](https://github.com/ilguyi/LAIDD-molecule-generation/blob/main/laiddmg/jupyter_char_rnn.ipynb),
 [`jupyter_vae.ipynb`](https://github.com/ilguyi/LAIDD-molecule-generation/blob/main/laiddmg/jupyter_vae.ipynb)
 파일은 각각 CharRNN모델, ChemicalVAE모델을 실행할 수 있습니다.
-Jupyter 파일 역시 해당 패키지를 설치해야 이용할 수 있습니다.
+Jupyter 파일 역시 이 저장소를 설치해야 이용할 수 있습니다.
 
 
 ### Command execution
@@ -123,7 +123,7 @@ laiddmg-generate char_rnn --seed 219 \
 ```
 
 * `seed`: 재현성을 위한 random seed number
-* `checkpoint_dir`: load할 weights file이 있는 ckeckpoint directory 경로
+* `checkpoint_dir`: load할 weights 파일이 있는 ckeckpoint directory 경로
 * `weights_name`: load할 weights 파일 이름
 * `num_generation`: 생성할 SMILES 갯수
 * `batch_size_for_generation`: 생성할 때 배치 사이즈
