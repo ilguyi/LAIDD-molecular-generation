@@ -166,7 +166,7 @@ laiddmg-generate char_rnn --seed 219 \
 >>> print(outputs)
 ```
 
-## Data
+## Dataset
 
 이 저장소에서는
 molecular generation 분야에서 대표적인 벤치마크 셋인
@@ -178,7 +178,6 @@ molecular generation 분야에서 대표적인 벤치마크 셋인
 이 저장소에서는 MOSES 데이터 셋에서 random 샘플링을 하여 `train set`:`test set`의 갯수를
 각각 25만, 3만으로 만들었습니다.
 나중에 MOSES dataset을 이용하여 트레이닝 해보시는 것을 추천 드립니다.
-
 
 
 ## Model architectures
