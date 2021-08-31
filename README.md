@@ -1,7 +1,7 @@
-# Molecular generation for LAIDD Lecture
+# Molecular generation for Lectures on AI-driven Drug Discovery
 
 * **이 저장소는 한국제약바이오협회 인공지능신약개발지원센터에서 제공하는
-LAIDD 강의의 일환으로 제작되었습니다.**
+Lectures on AI-driven Drug Discovery(LAIDD) 강의의 일환으로 제작되었습니다.**
 
 
 신약개발에서 원하는 특성을 가진 새로운 화합물을 찾아내는 것은
@@ -202,4 +202,5 @@ molecular generation 분야에서 대표적인 벤치마크 셋인
 
 ## Author
 
-이일구 (Il Gu Yi)
+* 이일구 (Il Gu Yi)
+* e-mail: ilgu.yi@pharmcadd.com
