@@ -20,15 +20,15 @@ def train_parser(parser: ArgumentParser) -> ArgumentParser:
   vae_parser = parser.add_parser('vae')
 
   vae_parser.add_argument('--num_train_epochs',
-                          default=50,
+                          default=100,
                           type=int,
                           help='number of epochs for training')
   vae_parser.add_argument('--train_batch_size',
-                          default=64,
+                          default=512,
                           type=int,
                           help='batch size per device for training')
   vae_parser.add_argument('--lr',
-                          default=3e-4,
+                          default=1e-4,
                           type=float,
                           help='learning rate for training')
 
@@ -143,8 +143,8 @@ class VAETrainer(Trainer):
       num_training_steps_per_epoch=self.args.num_training_steps_per_epoch,
       start_weight=0.0,
       stop_weight=0.05,
-      # n_cycle=1,
-      # ratio=1.0,
+      n_cycle=1,
+      ratio=1.0,
     )
 
     for epoch in range(1, self.args.num_train_epochs + 1):
