@@ -27,7 +27,7 @@ text(ASCII code) 기반 seqeunce 데이터로 표현하는 방법입니다.
 RNN모델은 이러한 seqeunce 데이터를 잘 다룰 수 있어서 SMILES기반 생성모델
 또는 QSAR모델등에 사용될 수 있습니다.
 
-* Final update: 2021. 08. 30.
+* Final update: 2021. 08. 31.
 * All right reserved @ 이일구 (Il Gu Yi) 2021
 
 
@@ -66,6 +66,7 @@ $ conda activate laiddmg
 $ git clone https://github.com/ilguyi/LAIDD-molecular-generation.git
 $ cd LAIDD-molecular-generation
 $ pip install .
+$ conda install -c conda-forge rdkit=2021.03.1  # 패키지 설치시 rdkit은 설치되지 않아 따로 설치해야 합니다.
 ```
 
 
@@ -89,6 +90,10 @@ Jupyter 파일 역시 이 저장소를 설치해야 이용할 수 있습니다.
 
 #### Training
 
+* 스크립트 파일을 직접 참고하시면 됩니다.
+* [`train.char_rnn.sh`](https://github.com/ilguyi/LAIDD-moleculra-generation/blob/main/laiddmg/train.char_rnn.sh)
+* [`train.vae.sh`](https://github.com/ilguyi/LAIDD-moleculra-generation/blob/main/laiddmg/train.vae.sh)
+
 ```bash
 #!/bin/bash
 
@@ -111,6 +116,9 @@ laiddmg-train char_rnn --seed 219 \
 * `model_depend_arguments`: 모델에 따라 다른 training arguments
 
 #### Generating
+
+* generate 스크립트를 직접 참고 하시면 됩니다.
+* [`generate.sh`](https://github.com/ilguyi/LAIDD-moleculra-generation/blob/main/laiddmg/generate.sh)
 
 ```bash
 #!/bin/bash
