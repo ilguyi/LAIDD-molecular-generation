@@ -49,6 +49,7 @@ setup(
       'torch>=1.0',
       'numpy',
       'pandas',
+      'jupyter',
       # 'scikit-learn',
       # 'scipy',
       'flake8',
