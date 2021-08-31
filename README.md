@@ -194,6 +194,12 @@ molecular generation 분야에서 대표적인 벤치마크 셋인
 1. **[ChemicalVAE]**: Variational autoencoders / [Automatic Chemical Design Using a Data-Driven Continuous Representation of Molecules](https://pubs.acs.org/doi/10.1021/acscentsci.7b00572), by Rafael Gómez-Bombarelli, Jennifer N. Wei, David Duvenaud, José Miguel Hernández-Lobato, Benjamín Sánchez-Lengeling, Dennis Sheberla, Jorge Aguilera-Iparraguirre, Timothy D. Hirzel, Ryan P. Adams, and Alán Aspuru-Guzik.
 
 
+## Lecture notes
+
+* [Lecture 1](https://www.dropbox.com/s/um8oukzoqlioff6/molecule%20generation%201.pdf?dl=0)
+* [Lecture 2](https://www.dropbox.com/s/okpnpjx2wmzioyo/molecule%20generation%202.pdf?dl=0)
+
+
 ## Author
 
 이일구 (Il Gu Yi)
