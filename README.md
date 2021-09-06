@@ -27,7 +27,7 @@ text(ASCII code) 기반 seqeunce 데이터로 표현하는 방법입니다.
 RNN모델은 이러한 seqeunce 데이터를 잘 다룰 수 있어서 SMILES기반 생성모델
 또는 QSAR모델등에 사용될 수 있습니다.
 
-* Final update: 2021. 9. 2.
+* Final update: 2021. 9. 6.
 * All right reserved @ 이일구 (Il Gu Yi) 2021
 
 
