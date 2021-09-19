@@ -27,8 +27,11 @@ text(ASCII code) 기반 seqeunce 데이터로 표현하는 방법입니다.
 RNN모델은 이러한 seqeunce 데이터를 잘 다룰 수 있어서 SMILES기반 생성모델
 또는 QSAR모델등에 사용될 수 있습니다.
 
-* Final update: 2021. 9. 6.
+* Final update: 2021. 9. 19.
 * All right reserved @ 이일구 (Il Gu Yi) 2021
+* 이 저장소는 Ubuntu, Linux Mint 및 MacOS에서 테스트 되었습니다.
+  * Windows는 별도의 테스트를 하지 못하였으나 가상환경 및 패키지설치가 된다면 사용가능할 것으로 생각됩니다.
+* Lectures on AI-driven Drug Discovery(LAIDD) 사이트: [https://www.laidd.org](https://www.laidd.org)
 
 
 ## Getting Started
